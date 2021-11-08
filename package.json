@@ -1,0 +1,32 @@
+{
+  "name": "evaluator-js",
+  "version": "1.0.0",
+  "description": "Custom Metrics Exporter",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ObserveRTC/evaluator-js.git"
+  },
+  "keywords": [
+    "webrtc",
+    "metrics"
+  ],
+  "author": "Balazs Kreith",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ObserveRTC/evaluator-js/issues"
+  },
+  "homepage": "https://github.com/ObserveRTC/evaluator-js#readme",
+  "dependencies": {
+    "convict": "^6.2.1",
+    "events": "^3.3.0",
+    "http": "^0.0.1-security",
+    "kafkajs": "^1.15.0",
+    "log4js": "^6.3.0",
+    "prom-client": "^14.0.0",
+    "uuid": "^8.3.2"
+  }
+}
