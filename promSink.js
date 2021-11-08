@@ -172,7 +172,6 @@ class PromSink {
         openedSfuRtpPads
             .labels(serviceId, mediaUnitId)
             .inc();
-        logger.info(`addedSfuRtpPad ${serviceId}, ${mediaUnitId}, ${streamDirection}`);
         if (streamDirection) {
             let directionCounter = null;
             const direction = streamDirection.toLowerCase();
@@ -189,7 +188,6 @@ class PromSink {
         closedSfuRtpPads
             .labels(serviceId, mediaUnitId)
             .inc();
-        logger.info(`removedSfuRtpPad ${serviceId}, ${mediaUnitId}, ${streamDirection}`);
         if (streamDirection) {
             let directionCounter = null;
             const direction = streamDirection.toLowerCase();
@@ -212,10 +210,13 @@ class PromSink {
         return this;
     }
 
-    addCallMaxClientNum({ serviceId, maxClient }) {
+    addCallMaxClientNum({ serviceId, maxClients }) {
+        if (!maxClients) {
+            return this;
+        }
         callMaxJoinedClients
             .labels(serviceId)
-            .observe(maxClient);
+            .observe(maxClients);
         return this;
     }
 

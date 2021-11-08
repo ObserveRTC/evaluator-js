@@ -127,7 +127,7 @@ const main = async () => {
     });
 
     kafkaSource.onReport(({ reportType, report }) => {
-        // logger.info(`Received `, reportType, report);
+        logger.debug(`Consumed Report `, reportType, report);
         reportDispatcher.dispatch(reportType, report);
     });
     const calls = Calls.builder().build();

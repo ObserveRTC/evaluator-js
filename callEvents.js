@@ -51,7 +51,7 @@ class CallEvents {
             return;
         }
         const { name: eventType } = callEvent;
-        // logger.info(`Dispatching event `, eventType, callEvent, typeof callEvent, Object.keys(callEvent));
+        logger.debug(`Dispatching event `, eventType, callEvent);
         try {
             this._emitter.emit(eventType, callEvent);
         } catch (error) {

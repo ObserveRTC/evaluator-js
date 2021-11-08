@@ -44,17 +44,18 @@ class SfuEvents {
         this._closed = false;
     }
 
-    dispatch(callEvent) {
-        if (!callEvent) {
-            logger.warn(`Received null callEvent`);
+    dispatch(sfuEvent) {
+        if (!sfuEvent) {
+            logger.warn(`Received null sfuEvent`);
             return;
         }
-        const eventType = callEvent.name;
+        const { name: eventType} = sfuEvent;
+        logger.debug(`Dispatching event `, eventType, sfuEvent);
         try {
-            this._emitter.emit(eventType, callEvent);
+            this._emitter.emit(eventType, sfuEvent);
         } catch (error) {
-            this._emitter.emit(ON_ERROR_EVENT_NAME, error, callEvent);
-            logger.warn(`Unexpected error occurred while emitting ${eventType}`, error, callEvent);
+            this._emitter.emit(ON_ERROR_EVENT_NAME, error, sfuEvent);
+            logger.warn(`Unexpected error occurred while emitting ${eventType}`, error, sfuEvent);
         }
         
     }
